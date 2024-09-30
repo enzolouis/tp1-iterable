@@ -42,8 +42,6 @@ public class TestSabot {
         	ite.remove();
         }
         
-        System.out.println("--------------------------");
-        
         // 2c
         
         Carte[] cartes3 = new Carte[4];
