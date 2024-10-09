@@ -28,11 +28,14 @@ public class JeuDeCartes {
         typesDeCartes.add(new Configuration(new Botte(Type.CREVAISON), 1));
         typesDeCartes.add(new Configuration(new Botte(Type.ACCIDENT), 1));
         
-        System.out.println(Arrays.toString(this.donnerCartes()));
+        // System.out.println(Arrays.toString(this.donnerCartes()));
 	}
 	
 	public static void main(String[] args) {
 		JeuDeCartes j = new JeuDeCartes();
+		System.out.println("helo");
+		
+		System.out.println(j.checkCount());
 	}
 	
 	public List<Configuration> getListConfiguration() {
@@ -62,12 +65,37 @@ public class JeuDeCartes {
 		return cartes;
 	}
 	
+	public int countConfigurationNumber(Carte c) {
+		List<Configuration> lst = this.getListConfiguration();
+		for (int i = 0; i < lst.size(); i++) {
+			if (lst.get(i).getCarte().equals(c)) {
+				return lst.get(i).getNbExemplaires();
+			}
+		}
+		return 0;
+	}
+	
+	public boolean countSameType(Carte[] cartes, Carte c) {
+		int count = 0;
+		for (int i = 0; i < cartes.length; i++) {
+			if (cartes[i] == c) {
+				count++;
+			}
+		}
+		
+		return count == countConfigurationNumber(c);
+	}
+	
 	public boolean checkCount() {
 		Carte[] cartes = donnerCartes();
-		List<Configuration> l =
+		
+		List<Configuration> l = this.getListConfiguration();
 		for (int i = 0; i < cartes.length; i++) {
-			
+			if (countSameType(cartes, cartes[i])) {
+				return false;
+			}
 		}
+		return false;
 	}
 
 }
