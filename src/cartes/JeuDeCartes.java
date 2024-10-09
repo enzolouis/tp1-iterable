@@ -1,6 +1,7 @@
 package cartes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class JeuDeCartes {
@@ -26,6 +27,12 @@ public class JeuDeCartes {
         typesDeCartes.add(new Configuration(new Botte(Type.ESSENCE), 1));
         typesDeCartes.add(new Configuration(new Botte(Type.CREVAISON), 1));
         typesDeCartes.add(new Configuration(new Botte(Type.ACCIDENT), 1));
+        
+        System.out.println(Arrays.toString(this.donnerCartes()));
+	}
+	
+	public static void main(String[] args) {
+		JeuDeCartes j = new JeuDeCartes();
 	}
 	
 	public List<Configuration> getListConfiguration() {
@@ -38,6 +45,29 @@ public class JeuDeCartes {
 			ret += c.getNbExemplaires() + " " + c.getCarte().toString() + "\n";
 		}
 		return ret;
+	}
+	
+	public Carte[] donnerCartes() {
+		Carte[] cartes = new Carte[100];
+		int cursor = 0;
+		
+		for (Configuration c : this.typesDeCartes) {
+			Carte carte = c.getCarte();
+			for (int i = 0; i < c.getNbExemplaires(); i++) {
+				cartes[cursor] = carte;
+				cursor++;
+			}
+		}
+		
+		return cartes;
+	}
+	
+	public boolean checkCount() {
+		Carte[] cartes = donnerCartes();
+		List<Configuration> l =
+		for (int i = 0; i < cartes.length; i++) {
+			
+		}
 	}
 
 }
