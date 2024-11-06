@@ -21,9 +21,9 @@ public class TestMethodeEquals {
 		Attaque feuRouge3 = new Attaque(Type.FEU);
 		Parade feuVert1 = new Parade(Type.FEU);
 		
-		System.out.println(b1.equals(b2));
-		System.out.println(feuRouge1.equals(feuRouge2));
-		System.out.println(feuRouge3.equals(feuVert1));
+		System.out.println("Deux cartes de 25km sont identiques ? " + b1.equals(b2));
+		System.out.println("Deux cartes de feux rouge sont identiques ? " + feuRouge1.equals(feuRouge2));
+		System.out.println("La carte feu rouge et la carte feu vert sont identiques ? " + feuRouge3.equals(feuVert1));
 	}
 
 }

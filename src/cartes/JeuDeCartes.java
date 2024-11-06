@@ -15,14 +15,15 @@ public class JeuDeCartes {
         typesDeCartes.add(new Configuration(new Borne(100), 12));
         typesDeCartes.add(new Configuration(new Borne(200), 4));
         typesDeCartes.add(new Configuration(new Parade(Type.FEU), 14));
+        typesDeCartes.add(new Configuration(new FinLimite(), 6));
         typesDeCartes.add(new Configuration(new Parade(Type.ESSENCE), 6));
         typesDeCartes.add(new Configuration(new Parade(Type.CREVAISON), 6));
         typesDeCartes.add(new Configuration(new Parade(Type.ACCIDENT), 6));
         typesDeCartes.add(new Configuration(new Attaque(Type.FEU), 5));
+        typesDeCartes.add(new Configuration(new DebutLimite(), 4));
         typesDeCartes.add(new Configuration(new Attaque(Type.ESSENCE), 3));
         typesDeCartes.add(new Configuration(new Attaque(Type.CREVAISON), 3));
         typesDeCartes.add(new Configuration(new Attaque(Type.ACCIDENT), 3));
-        typesDeCartes.add(new Configuration(new Attaque(Type.FEU), 4));
         typesDeCartes.add(new Configuration(new Botte(Type.FEU), 1));
         typesDeCartes.add(new Configuration(new Botte(Type.ESSENCE), 1));
         typesDeCartes.add(new Configuration(new Botte(Type.CREVAISON), 1));
@@ -51,7 +52,7 @@ public class JeuDeCartes {
 	}
 	
 	public Carte[] donnerCartes() {
-		Carte[] cartes = new Carte[100];
+		Carte[] cartes = new Carte[106];
 		int cursor = 0;
 		
 		for (Configuration c : this.typesDeCartes) {
@@ -91,11 +92,11 @@ public class JeuDeCartes {
 		
 		List<Configuration> l = this.getListConfiguration();
 		for (int i = 0; i < cartes.length; i++) {
-			if (countSameType(cartes, cartes[i])) {
+			if (!countSameType(cartes, cartes[i])) {
 				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 }

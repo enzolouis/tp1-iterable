@@ -94,7 +94,6 @@ public class Sabot implements Iterable {
 		}
 		
 		private void verificationConcurrence() {
-			System.out.println(nombreOperations + " d " + nombreOperationsReference);
 			if (nombreOperations != nombreOperationsReference) {
 				throw new ConcurrentModificationException();
 			}
